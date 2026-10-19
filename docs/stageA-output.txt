@@ -1,0 +1,149 @@
+# Stage A (bench-gauges-gpu-sweep1 version 1, pushed 2026-10-10 02:57:42 UTC, COMPLETE 04:03 UTC): planner table, wrapper summary and validation curves (copied from the fetched outputs, nothing re-scored; no test image was read)
+
+## planner (tools/gpu_stage_b.py, combined mode, Stage A billed 7800 s)
+| tag | params (M) | validation Acc_eps | T_run (min) | valid | eligible | note |
+|---|---|---|---|---|---|---|
+| a1-mnv3s224-f100 | 3.45 | 0.6474 | 42.6 | True | True |  |
+| a2-r18-224 | 13.08 | 0.6809 | 27.2 | True | True |  |
+| a3-r18-320 | - | - | - | False | False | no result (skipped, failed or not run) |
+| a4-mnv3s320 | 5.12 | 0.6636 | 32.7 | True | True |  |
+| a5-r34-224 | - | - | - | False | False | no result (skipped, failed or not run) |
+| a6-mnv3l224 | - | - | - | False | False | no result (skipped, failed or not run) |
+| a7-mnv3l320 | - | - | - | False | False | no result (skipped, failed or not run) |
+
+hardware assumed for Stage B: 2 GPU(s) held (billed rate 2x), 2 worker(s)
+P (primary) = a2-r18-224 score 0.6809 | E (edge pick) = a2-r18-224 score 0.6809 (same as P)
+futility stop (best validation < 0.64): False
+kept runs (8, 224 run-minutes of work): f-r18-224-off-s0(28m), f-r18-224-off-s1(28m), f-r18-224-off-s2(28m), f-r18-224-v3-s0(28m), f-r18-224-off-s3(28m), f-r18-224-off-s4(28m), f-r18-224-v3-s1(28m), f-r18-224-v3-s2(28m)
+
+gpu-final: 8 runs, 13440 s of work, schedule 6720 s on 2 worker(s), cap 17400 billed s (= -t), expected 122 min wall, about 4.07 billed GPU-h
+  ../bin/guard.sh -- .venv/bin/python tools/make_kernel.py gpu-final torch-train-gpu --config-file kernels/gpu-final/configs.json --est-json kernels/gpu-final/est_s.json --cap-billed-s 17400 --workers 2 --internet --gpu NvidiaTeslaT4 --sources rpm-prep,model-port,rpm-split3
+  ../bin/guard.sh -- .venv/bin/python tools/check_kernel.py kernels/gpu-final --gpu --mixed
+  tools/gpu_push_wait.sh kernels/gpu-final sankalpsthakur/bench-gauges-gpu-final logs/kaggle-output/gpu-final 17400 122 "FROZEN-4 Stage B official + v3: 8 runs (f-r18-224-off-s0, f-r18-224-off-s1, f-r18-224-off-s2, f-r18-224-v3-s0, f-r18-224-off-s3, f-r18-224-off-s4, f-r18-224-v3-s1, f-r18-224-v3-s2), reads the private rpm-prep and model-port and rpm-split3 outputs"   # run in the background
+  # the push script's defaults (T4 shape, -t = cap / 2 + 600 = 9300) apply; a single-GPU shape would need GPU_SHAPES=... and its own -t
+
+CPU follow-up (no GPU hours; after the Stage B kernels finished; FROZEN-3 sweep on the seed-0 weights):
+  ../bin/guard.sh -- .venv/bin/python tools/make_kernel.py gpu-int8 int8-sweep --config-file kernels/gpu-int8/models.json --internet --sources rpm-prep,rpm-split3,gpu-final
+  tools/slot_push_wait.sh kernels/gpu-int8 sankalpsthakur/bench-gauges-gpu-int8 logs/kaggle-output/gpu-int8 '^(?!.*fp32).*\.(json|txt|onnx)$' 7200 90 "FROZEN-4 section 5 int8 sweep"
+
+sum of caps: Stage A 7800 (as actually billed) + Stage B -> 25200 billed s (7.00 GPU-h of the 7 h allowed; the 8 h cap keeps at least 1 h as the retry reserve); ok
+written: kernels/gpu-final-*/{configs,est_s}.json, kernels/gpu-int8/models.json and docs/stage_b_plan.json
+
+## wrapper_summary.json
+{
+ "elapsed_s": 3728,
+ "cap_billed_s": 10800,
+ "gpus": 2,
+ "gpu_names": [
+  "GPU 0: Tesla T4 (UUID: GPU-99d63384-62df-78ee-5b9f-57386d3fdf72)",
+  "GPU 1: Tesla T4 (UUID: GPU-9c4026bd-e672-87a5-932e-9b77174d5ce9)"
+ ],
+ "workers": 2,
+ "hard_s": 5100.0,
+ "budget_s": 4500.0,
+ "killed_at_hard_limit": false,
+ "exit_codes": [
+  0,
+  0
+ ],
+ "status": {
+  "a1-mnv3s224-f100": {
+   "status": "done",
+   "secs": 2600,
+   "expected_s": 690,
+   "worker": 0
+  },
+  "a2-r18-224": {
+   "status": "done",
+   "secs": 1679,
+   "expected_s": 810,
+   "worker": 1
+  },
+  "a3-r18-320": {
+   "status": "skipped_budget",
+   "elapsed_s": 2612,
+   "expected_s": 4590,
+   "worker": 0
+  },
+  "a4-mnv3s320": {
+   "status": "done",
+   "secs": 2036,
+   "expected_s": 750,
+   "worker": 1
+  },
+  "a5-r34-224": {
+   "status": "skipped_budget",
+   "elapsed_s": 2612,
+   "expected_s": 4410,
+   "worker": 0
+  },
+  "a6-mnv3l224": {
+   "status": "skipped_budget",
+   "elapsed_s": 2612,
+   "expected_s": 1890,
+   "worker": 0
+  },
+  "a7-mnv3l320": {
+   "status": "skipped_budget",
+   "elapsed_s": 2612,
+   "expected_s": 3150,
+   "worker": 0
+  }
+ }
+}
+## tools/summarize.py (validation history; EMA window decoder is the frozen one)
+== a1-mnv3s224-f100 arch=mobilenetv3_small_100 res=224 params=3.45M epochs=100 bs=32 lr=0.0007 hash=7bd2c6beba01 secs/epoch~24.6
+  ep  5 loss 4.766 | EMA window 0.3140 argmax 0.3191 expect 0.0884 spanacc 0.968 oracle-span 0.3150 | raw window 0.3333
+  ep 10 loss 3.929 | EMA window 0.4959 argmax 0.4909 expect 0.3476 spanacc 0.970 oracle-span 0.5030 | raw window 0.4096
+  ep 15 loss 3.487 | EMA window 0.5691 argmax 0.5610 expect 0.4522 spanacc 0.974 oracle-span 0.5691 | raw window 0.5163
+  ep 20 loss 3.262 | EMA window 0.5742 argmax 0.5772 expect 0.5010 spanacc 0.972 oracle-span 0.5742 | raw window 0.5478
+  ep 25 loss 3.070 | EMA window 0.6047 argmax 0.6037 expect 0.5203 spanacc 0.971 oracle-span 0.6067 | raw window 0.5407
+  ep 30 loss 2.950 | EMA window 0.6159 argmax 0.6138 expect 0.5356 spanacc 0.971 oracle-span 0.6189 | raw window 0.5813
+  ep 35 loss 2.857 | EMA window 0.6230 argmax 0.6077 expect 0.5579 spanacc 0.972 oracle-span 0.6270 | raw window 0.5894
+  ep 40 loss 2.755 | EMA window 0.6402 argmax 0.6209 expect 0.5843 spanacc 0.967 oracle-span 0.6413 | raw window 0.6016
+  ep 45 loss 2.668 | EMA window 0.6199 argmax 0.6118 expect 0.5742 spanacc 0.970 oracle-span 0.6179 | raw window 0.5783
+  ep 50 loss 2.627 | EMA window 0.6402 argmax 0.6179 expect 0.5813 spanacc 0.979 oracle-span 0.6402 | raw window 0.6209
+  ep 55 loss 2.557 | EMA window 0.6341 argmax 0.6199 expect 0.5965 spanacc 0.966 oracle-span 0.6331 | raw window 0.6291
+  ep 60 loss 2.507 | EMA window 0.6362 argmax 0.6179 expect 0.5925 spanacc 0.970 oracle-span 0.6331 | raw window 0.6280
+  ep 65 loss 2.450 | EMA window 0.6392 argmax 0.6220 expect 0.6026 spanacc 0.972 oracle-span 0.6392 | raw window 0.6260
+  ep 70 loss 2.395 | EMA window 0.6382 argmax 0.6270 expect 0.6118 spanacc 0.970 oracle-span 0.6402 | raw window 0.6382
+  ep 75 loss 2.361 | EMA window 0.6413 argmax 0.6250 expect 0.6138 spanacc 0.973 oracle-span 0.6423 | raw window 0.6362
+  ep 80 loss 2.339 | EMA window 0.6413 argmax 0.6270 expect 0.6118 spanacc 0.970 oracle-span 0.6402 | raw window 0.6494
+  ep 85 loss 2.321 | EMA window 0.6433 argmax 0.6260 expect 0.6077 spanacc 0.971 oracle-span 0.6423 | raw window 0.6392
+  ep 90 loss 2.298 | EMA window 0.6494 argmax 0.6270 expect 0.6138 spanacc 0.972 oracle-span 0.6494 | raw window 0.6433
+  ep 95 loss 2.285 | EMA window 0.6453 argmax 0.6230 expect 0.6067 spanacc 0.971 oracle-span 0.6453 | raw window 0.6463
+  ep100 loss 2.287 | EMA window 0.6474 argmax 0.6240 expect 0.6128 spanacc 0.971 oracle-span 0.6474 | raw window 0.6413
+== a2-r18-224 arch=resnet18 res=224 params=13.08M epochs=80 bs=64 lr=0.0006 hash=37b5f4913900 secs/epoch~19.3
+  ep  5 loss 3.944 | EMA window 0.5488 argmax 0.5112 expect 0.4045 spanacc 0.973 oracle-span 0.5518 | raw window 0.4319
+  ep 10 loss 3.457 | EMA window 0.6372 argmax 0.6128 expect 0.5904 spanacc 0.976 oracle-span 0.6402 | raw window 0.5498
+  ep 15 loss 3.212 | EMA window 0.6443 argmax 0.6250 expect 0.6240 spanacc 0.975 oracle-span 0.6463 | raw window 0.5518
+  ep 20 loss 3.014 | EMA window 0.6596 argmax 0.6474 expect 0.6301 spanacc 0.974 oracle-span 0.6596 | raw window 0.6057
+  ep 25 loss 2.836 | EMA window 0.6677 argmax 0.6585 expect 0.6504 spanacc 0.972 oracle-span 0.6717 | raw window 0.6585
+  ep 30 loss 2.696 | EMA window 0.6789 argmax 0.6575 expect 0.6606 spanacc 0.976 oracle-span 0.6789 | raw window 0.6341
+  ep 35 loss 2.615 | EMA window 0.6657 argmax 0.6565 expect 0.6636 spanacc 0.974 oracle-span 0.6667 | raw window 0.6463
+  ep 40 loss 2.512 | EMA window 0.6728 argmax 0.6575 expect 0.6474 spanacc 0.971 oracle-span 0.6738 | raw window 0.6474
+  ep 45 loss 2.441 | EMA window 0.6677 argmax 0.6667 expect 0.6524 spanacc 0.968 oracle-span 0.6687 | raw window 0.6555
+  ep 50 loss 2.369 | EMA window 0.6758 argmax 0.6524 expect 0.6545 spanacc 0.976 oracle-span 0.6768 | raw window 0.6657
+  ep 55 loss 2.307 | EMA window 0.6738 argmax 0.6596 expect 0.6646 spanacc 0.973 oracle-span 0.6758 | raw window 0.6636
+  ep 60 loss 2.262 | EMA window 0.6799 argmax 0.6687 expect 0.6789 spanacc 0.973 oracle-span 0.6799 | raw window 0.6870
+  ep 65 loss 2.220 | EMA window 0.6799 argmax 0.6657 expect 0.6738 spanacc 0.971 oracle-span 0.6819 | raw window 0.6839
+  ep 70 loss 2.209 | EMA window 0.6778 argmax 0.6596 expect 0.6738 spanacc 0.971 oracle-span 0.6799 | raw window 0.6799
+  ep 75 loss 2.191 | EMA window 0.6789 argmax 0.6626 expect 0.6717 spanacc 0.971 oracle-span 0.6809 | raw window 0.6789
+  ep 80 loss 2.193 | EMA window 0.6809 argmax 0.6626 expect 0.6707 spanacc 0.970 oracle-span 0.6829 | raw window 0.6768
+== a4-mnv3s320 arch=mobilenetv3_small_100 res=320 params=5.12M epochs=80 bs=64 lr=0.001 hash=615e1a72866e secs/epoch~23.4
+  ep  5 loss 4.349 | EMA window 0.4045 argmax 0.3892 expect 0.1575 spanacc 0.973 oracle-span 0.4075 | raw window 0.2683
+  ep 10 loss 3.590 | EMA window 0.5396 argmax 0.5254 expect 0.4380 spanacc 0.974 oracle-span 0.5437 | raw window 0.4776
+  ep 15 loss 3.248 | EMA window 0.6037 argmax 0.5793 expect 0.5315 spanacc 0.976 oracle-span 0.6057 | raw window 0.5559
+  ep 20 loss 3.045 | EMA window 0.6179 argmax 0.6118 expect 0.5650 spanacc 0.973 oracle-span 0.6199 | raw window 0.5579
+  ep 25 loss 2.872 | EMA window 0.6392 argmax 0.6321 expect 0.5864 spanacc 0.976 oracle-span 0.6392 | raw window 0.5874
+  ep 30 loss 2.772 | EMA window 0.6453 argmax 0.6301 expect 0.5904 spanacc 0.975 oracle-span 0.6433 | raw window 0.5976
+  ep 35 loss 2.679 | EMA window 0.6494 argmax 0.6382 expect 0.6037 spanacc 0.971 oracle-span 0.6524 | raw window 0.6199
+  ep 40 loss 2.572 | EMA window 0.6402 argmax 0.6341 expect 0.6199 spanacc 0.970 oracle-span 0.6382 | raw window 0.6220
+  ep 45 loss 2.519 | EMA window 0.6433 argmax 0.6270 expect 0.6199 spanacc 0.975 oracle-span 0.6443 | raw window 0.6392
+  ep 50 loss 2.458 | EMA window 0.6453 argmax 0.6362 expect 0.6321 spanacc 0.974 oracle-span 0.6474 | raw window 0.6392
+  ep 55 loss 2.397 | EMA window 0.6585 argmax 0.6474 expect 0.6321 spanacc 0.974 oracle-span 0.6606 | raw window 0.6524
+  ep 60 loss 2.336 | EMA window 0.6626 argmax 0.6535 expect 0.6372 spanacc 0.973 oracle-span 0.6667 | raw window 0.6494
+  ep 65 loss 2.292 | EMA window 0.6657 argmax 0.6565 expect 0.6372 spanacc 0.973 oracle-span 0.6697 | raw window 0.6626
+  ep 70 loss 2.268 | EMA window 0.6626 argmax 0.6585 expect 0.6433 spanacc 0.976 oracle-span 0.6636 | raw window 0.6585
+  ep 75 loss 2.261 | EMA window 0.6636 argmax 0.6565 expect 0.6372 spanacc 0.976 oracle-span 0.6646 | raw window 0.6616
+  ep 80 loss 2.256 | EMA window 0.6636 argmax 0.6565 expect 0.6362 spanacc 0.977 oracle-span 0.6657 | raw window 0.6616

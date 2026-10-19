@@ -1,0 +1,134 @@
+# Stage B (bench-gauges-gpu-final version 1, re-pushed 2026-10-17 17:28:39 UTC after the queue rule, RUNNING from about 17:28:51 UTC, COMPLETE before 19:23 UTC): wrapper summary, validity evidence, per-run summary, trainer TEST lines and the seed-mean statistic (copied from the fetched outputs, nothing re-scored)
+
+## wrapper_summary.json
+{
+ "elapsed_s": 6657,
+ "cap_billed_s": 17400,
+ "gpus": 2,
+ "gpu_names": [
+  "GPU 0: Tesla T4 (UUID: GPU-37f14ffd-ed32-01e1-4129-01a86e27e7cb)",
+  "GPU 1: Tesla T4 (UUID: GPU-c00768dd-4946-686d-76db-6e73c8c422a0)"
+ ],
+ "workers": 2,
+ "hard_s": 8400.0,
+ "budget_s": 7800.0,
+ "killed_at_hard_limit": false,
+ "exit_codes": [
+  0,
+  0
+ ],
+ "status": {
+  "f-r18-224-off-s0": {
+   "status": "done",
+   "secs": 1729,
+   "expected_s": 1680,
+   "worker": 0
+  },
+  "f-r18-224-v3-s0": {
+   "status": "done",
+   "secs": 1453,
+   "expected_s": 1680,
+   "worker": 0
+  },
+  "f-r18-224-off-s3": {
+   "status": "done",
+   "secs": 1697,
+   "expected_s": 1680,
+   "worker": 0
+  },
+  "f-r18-224-v3-s1": {
+   "status": "done",
+   "secs": 1621,
+   "expected_s": 1680,
+   "worker": 0
+  },
+  "f-r18-224-v3-s2": {
+   "status": "done",
+   "secs": 1555,
+   "expected_s": 1680,
+   "worker": 1
+  },
+  "f-r18-224-off-s1": {
+   "status": "done",
+   "secs": 1728,
+   "expected_s": 1680,
+   "worker": 1
+  },
+  "f-r18-224-off-s2": {
+   "status": "done",
+   "secs": 1668,
+   "expected_s": 1680,
+   "worker": 1
+  },
+  "f-r18-224-off-s4": {
+   "status": "done",
+   "secs": 1690,
+   "expected_s": 1680,
+   "worker": 1
+  }
+ }
+}
+
+## validity evidence (kernel log lines; criteria of FROZEN-4 section 1)
+WRAPPER gpus 2 ['GPU 0: Tesla T4 (UUID: GPU-37f14ffd-ed32-01e1-4129-01a86e27e7cb)', 'GPU 1: Tesla T4 (UUID: GPU-c00768dd-4946-686d-76db-6e73c8c422a0)'] | workers 2 | billed rate 2x | hard wall limit 8400 s, start budget 7800 s (cap 17400 billed s)
+[w0] DEVICE w0 Tesla T4 count 1 torch 2.11.0+cu128 cuda 12.8
+[w1] DEVICE w1 Tesla T4 count 1 torch 2.11.0+cu128 cuda 12.8
+[w0] PREFLIGHT resnet18 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[w1] PREFLIGHT resnet18 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[w0] CONFIG DONE f-r18-224-off-s0 in 1729 s (expected 1680 s, scale now 1.03)
+[w1] CONFIG DONE f-r18-224-off-s1 in 1728 s (expected 1680 s, scale now 1.03)
+[w0] CONFIG DONE f-r18-224-v3-s0 in 1453 s (expected 1680 s, scale now 0.86)
+[w1] CONFIG DONE f-r18-224-off-s2 in 1668 s (expected 1680 s, scale now 0.99)
+[w0] CONFIG DONE f-r18-224-off-s3 in 1697 s (expected 1680 s, scale now 1.01)
+[w1] CONFIG DONE f-r18-224-off-s4 in 1690 s (expected 1680 s, scale now 1.01)
+[w0] CONFIG DONE f-r18-224-v3-s1 in 1621 s (expected 1680 s, scale now 0.96)
+[w0] SKIPPED (budget): f-r18-224-v3-s2 elapsed 6514 s + expected 1621 s > 7800 s
+[w1] CONFIG DONE f-r18-224-v3-s2 in 1555 s (expected 1680 s, scale now 0.93)
+-- trainer lines per run (worker logs): backbone load and parameter count
+[   44.2s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[   45.3s] params (M) 13.079234
+[ 1744.6s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 1744.8s] params (M) 13.078208
+[ 3197.4s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 3197.8s] params (M) 13.079234
+[ 4894.1s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 4894.4s] params (M) 13.078208
+[   44.2s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[   45.3s] params (M) 13.079234
+[ 1743.3s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 1743.4s] params (M) 13.079234
+[ 3411.2s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 3411.5s] params (M) 13.079234
+[ 5101.1s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+[ 5102.0s] params (M) 13.078208
+
+## per-run summary (jq on <tag>_result.json: parameters, epochs, sum of epoch seconds, all losses finite, final validation = EMA window decoder, trainer TEST block)
+f-r18-224-off-s0 | params 13079234 | seed 0 | epochs 80 | secs 1566 | losses_finite true | val_ema_window 0.6849593495934959 | TEST acc_eps 0.6845 n 2000 wilson [0.6637961166040652, 0.7044964929380143] gboot [0.664303988080462, 0.703888891983268] decoders a/e/w 0.676/0.67/0.6845
+f-r18-224-off-s1 | params 13079234 | seed 1 | epochs 80 | secs 1560 | losses_finite true | val_ema_window 0.6971544715447154 | TEST acc_eps 0.691 n 2000 wilson [0.6703987236245121, 0.7108689643025186] gboot [0.6707932094237433, 0.7107205539427165] decoders a/e/w 0.674/0.6885/0.691
+f-r18-224-off-s2 | params 13079234 | seed 2 | epochs 80 | secs 1540 | losses_finite true | val_ema_window 0.6869918699186992 | TEST acc_eps 0.688 n 2000 wilson [0.6673507903261628, 0.7079283998847363] gboot [0.6670004139013277, 0.708566604973316] decoders a/e/w 0.6815/0.672/0.688
+f-r18-224-off-s3 | params 13079234 | seed 3 | epochs 80 | secs 1566 | losses_finite true | val_ema_window 0.6849593495934959 | TEST acc_eps 0.681 n 2000 wilson [0.6602427758326688, 0.7010632530405909] gboot [0.66071927964822, 0.7020876626878225] decoders a/e/w 0.6715/0.6715/0.681
+f-r18-224-off-s4 | params 13079234 | seed 4 | epochs 80 | secs 1559 | losses_finite true | val_ema_window 0.6910569105691057 | TEST acc_eps 0.6835 n 2000 wilson [0.6627807408887915, 0.7035157027479108] gboot [0.6627480469009942, 0.7032482843427466] decoders a/e/w 0.672/0.677/0.6835
+f-r18-224-v3-s0 | params 13078208 | seed 0 | epochs 80 | secs 1294 | losses_finite true | val_ema_window 0.5286016949152542 | TEST acc_eps 0.5461413923367512 n 1853 wilson [0.5234006710422161, 0.5686911977504074] gboot [0.5224435598034087, 0.5719852405638459] decoders a/e/w 0.5391257420399352/0.5321100917431193/0.5461413923367512
+f-r18-224-v3-s1 | params 13078208 | seed 1 | epochs 80 | secs 1462 | losses_finite true | val_ema_window 0.5455508474576272 | TEST acc_eps 0.5407447382622774 n 1853 wilson [0.5179938175288274, 0.5633270724576414] gboot [0.5160606271806439, 0.5657760554166764] decoders a/e/w 0.5364274150026983/0.5137614678899083/0.5407447382622774
+f-r18-224-v3-s2 | params 13078208 | seed 2 | epochs 80 | secs 1408 | losses_finite true | val_ema_window 0.5402542372881356 | TEST acc_eps 0.5450620615218564 n 1853 wilson [0.5223190863541992, 0.5676185866771933] gboot [0.5206956115779645, 0.5708110410730219] decoders a/e/w 0.5434430652995142/0.5321100917431193/0.5450620615218564
+
+## trainer TEST lines, full (as printed by the kernel; window decoder is the frozen one)
+[w0] [ 1743.0s] TEST {"metrics": {"n": 2000, "acc_eps": 0.6845, "acc_theta": 0.7465968586387435, "ref": 0.08143484030318869, "rel": 0.3779539684446833, "n_nonzero_gt": 1910}, "wilson95": [0.6637961166040652, 0.7044964929380143], "grouped_bootstrap95": [0.664303988080462, 0.703888891983268], "n_test_groups": 1822, "per_meter_type": {"biao1": {"n": 483, "acc_eps": 0.6770186335403726}, "biao2": {"n": 253, "acc_eps": 0.6679841897233202}, "biao3": {"n": 87, "acc_eps": 0.9080459770114943}, "biao4": {"n": 199, "acc_eps": 0.7788944723618091}, "biao5": {"n": 372, "acc_eps": 0.8010752688172043}, "biao6": {"n": 412, "acc_eps": 0.6650485436893204}, "others": {"n": 194, "acc_eps": 0.34536082474226804}}, "decoders": {"argmax": 0.676, "expect": 0.67, "window": 0.6845}, "span_cls_hist": [7, 6, 666, 664, 562, 18, 7, 7, 63], "by_train_similarity": {"0.00-0.90": {"n": 927, "acc_eps": 0.6386192017259978}, "0.90-0.95": {"n": 268, "acc_eps": 0.6529850746268657}, "0.95-0.98": {"n": 325, "acc_eps": 0.7569230769230769}, "0.98-0.99": {"n": 179, "acc_eps": 0.7821229050279329}, "0.99-1.00": {"n": 301, "acc_eps": 0.717607973421927}}}
+[w1] [ 1741.9s] TEST {"metrics": {"n": 2000, "acc_eps": 0.691, "acc_theta": 0.7439790575916231, "ref": 0.07120182464629042, "rel": 0.34470872492805776, "n_nonzero_gt": 1910}, "wilson95": [0.6703987236245121, 0.7108689643025186], "grouped_bootstrap95": [0.6707932094237433, 0.7107205539427165], "n_test_groups": 1822, "per_meter_type": {"biao1": {"n": 483, "acc_eps": 0.6977225672877847}, "biao2": {"n": 253, "acc_eps": 0.6561264822134387}, "biao3": {"n": 87, "acc_eps": 0.896551724137931}, "biao4": {"n": 199, "acc_eps": 0.7788944723618091}, "biao5": {"n": 372, "acc_eps": 0.8010752688172043}, "biao6": {"n": 412, "acc_eps": 0.6844660194174758}, "others": {"n": 194, "acc_eps": 0.3402061855670103}}, "decoders": {"argmax": 0.674, "expect": 0.6885, "window": 0.691}, "span_cls_hist": [4, 4, 665, 664, 564, 21, 7, 5, 66], "by_train_similarity": {"0.00-0.90": {"n": 927, "acc_eps": 0.6558791801510249}, "0.90-0.95": {"n": 268, "acc_eps": 0.6828358208955224}, "0.95-0.98": {"n": 325, "acc_eps": 0.7353846153846154}, "0.98-0.99": {"n": 179, "acc_eps": 0.7486033519553073}, "0.99-1.00": {"n": 301, "acc_eps": 0.7242524916943521}}}
+[w0] [ 3195.9s] TEST {"metrics": {"n": 1853, "acc_eps": 0.5461413923367512, "acc_theta": 0.6804238706079196, "ref": 0.15647400237935188, "rel": 0.8712007696463923, "n_nonzero_gt": 1793}, "wilson95": [0.5234006710422161, 0.5686911977504074], "grouped_bootstrap95": [0.5224435598034087, 0.5719852405638459], "n_test_groups": 1689, "per_meter_type": {"biao1": {"n": 72, "acc_eps": 0.5694444444444444}, "biao2": {"n": 53, "acc_eps": 0.6226415094339622}, "biao3": {"n": 8, "acc_eps": 0.625}, "biao4": {"n": 21, "acc_eps": 0.7619047619047619}, "biao5": {"n": 100, "acc_eps": 0.45}, "biao6": {"n": 58, "acc_eps": 0.5689655172413793}, "others": {"n": 53, "acc_eps": 0.24528301886792453}, "train.json row": {"n": 1488, "acc_eps": 0.5551075268817204}}, "decoders": {"argmax": 0.5391257420399352, "expect": 0.5321100917431193, "window": 0.5461413923367512}, "span_cls_hist": [662, 574, 461, 63, 9, 7, 120], "by_train_similarity": {"0.00-0.90": {"n": 1059, "acc_eps": 0.4910292728989613}, "0.90-0.95": {"n": 264, "acc_eps": 0.6212121212121212}, "0.95-0.98": {"n": 363, "acc_eps": 0.6033057851239669}, "0.98-0.99": {"n": 154, "acc_eps": 0.6493506493506493}, "0.99-1.00": {"n": 13, "acc_eps": 0.6923076923076923}}, "split_file": {"info": {"split_file": "splits_v3.json", "split_sha256": "c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3", "n_names": {"train": 7176, "val": 945, "test": 1896}, "n_rows": {"train": 7176, "val": 945, "test": 1896}, "names_without_label_row": {"train": 0, "val": 0, "test": 0}, "n_test_known_range": 1853, "n_test_unknown_range": 43, "n_test_from_test_json": 365, "B": 160, "seed": 2029, "tau_twin": 0.98, "manifest_baselines": {"knn_copy_official": [0.4177088544272136, 1999], "knn_copy_v3_test": [0.3416082029141932, 1853], "knn_copy_v3_val": [0.24258474576271186, 944]}}, "n_test_rows": 1896, "n_scored": 1853, "n_excluded_unknown_range": 43, "by_source_file": {"test.json": {"n": 365, "acc_eps": 0.5095890410958904}, "train.json": {"n": 1488, "acc_eps": 0.5551075268817204}}, "by_range_source": {"detail_parse": {"n": 166, "acc_eps": 0.1927710843373494}, "range_field": {"n": 1322, "acc_eps": 0.6006051437216339}, "range_numeric": {"n": 365, "acc_eps": 0.5095890410958904}, "unknown": {"n": 0, "acc_eps": null}}, "by_range_class": {"range 3": {"n": 663, "acc_eps": 0.5520361990950227}, "range 6": {"n": 578, "acc_eps": 0.6591695501730104}, "range 10": {"n": 460, "acc_eps": 0.5260869565217391}, "other": {"n": 152, "acc_eps": 0.1513157894736842}}, "knn_copy_baseline": {"n": 1853, "acc_eps": 0.3410685375067458, "wilson95": [0.31983220516106364, 0.36296246899767753], "feature": "min(cos gray56, cos rgb32), nearest image of the split's train part"}}}
+[w1] [ 3409.8s] TEST {"metrics": {"n": 2000, "acc_eps": 0.688, "acc_theta": 0.7518324607329843, "ref": 0.08164405203901029, "rel": 0.4293604979663196, "n_nonzero_gt": 1910}, "wilson95": [0.6673507903261628, 0.7079283998847363], "grouped_bootstrap95": [0.6670004139013277, 0.708566604973316], "n_test_groups": 1822, "per_meter_type": {"biao1": {"n": 483, "acc_eps": 0.6853002070393375}, "biao2": {"n": 253, "acc_eps": 0.6600790513833992}, "biao3": {"n": 87, "acc_eps": 0.9080459770114943}, "biao4": {"n": 199, "acc_eps": 0.8040201005025126}, "biao5": {"n": 372, "acc_eps": 0.8118279569892473}, "biao6": {"n": 412, "acc_eps": 0.6723300970873787}, "others": {"n": 194, "acc_eps": 0.30927835051546393}}, "decoders": {"argmax": 0.6815, "expect": 0.672, "window": 0.688}, "span_cls_hist": [3, 5, 664, 662, 560, 22, 8, 5, 71], "by_train_similarity": {"0.00-0.90": {"n": 927, "acc_eps": 0.6418554476806904}, "0.90-0.95": {"n": 268, "acc_eps": 0.6828358208955224}, "0.95-0.98": {"n": 325, "acc_eps": 0.7507692307692307}, "0.98-0.99": {"n": 179, "acc_eps": 0.7597765363128491}, "0.99-1.00": {"n": 301, "acc_eps": 0.7242524916943521}}}
+[w0] [ 4892.7s] TEST {"metrics": {"n": 2000, "acc_eps": 0.681, "acc_theta": 0.7486910994764397, "ref": 0.06536005226559703, "rel": 0.37002385970482116, "n_nonzero_gt": 1910}, "wilson95": [0.6602427758326688, 0.7010632530405909], "grouped_bootstrap95": [0.66071927964822, 0.7020876626878225], "n_test_groups": 1822, "per_meter_type": {"biao1": {"n": 483, "acc_eps": 0.6832298136645962}, "biao2": {"n": 253, "acc_eps": 0.6679841897233202}, "biao3": {"n": 87, "acc_eps": 0.896551724137931}, "biao4": {"n": 199, "acc_eps": 0.7688442211055276}, "biao5": {"n": 372, "acc_eps": 0.7876344086021505}, "biao6": {"n": 412, "acc_eps": 0.6723300970873787}, "others": {"n": 194, "acc_eps": 0.31958762886597936}}, "decoders": {"argmax": 0.6715, "expect": 0.6715, "window": 0.681}, "span_cls_hist": [4, 7, 665, 663, 562, 23, 9, 4, 63], "by_train_similarity": {"0.00-0.90": {"n": 927, "acc_eps": 0.6364617044228694}, "0.90-0.95": {"n": 268, "acc_eps": 0.6865671641791045}, "0.95-0.98": {"n": 325, "acc_eps": 0.7569230769230769}, "0.98-0.99": {"n": 179, "acc_eps": 0.7262569832402235}, "0.99-1.00": {"n": 301, "acc_eps": 0.7043189368770764}}}
+[w1] [ 5099.6s] TEST {"metrics": {"n": 2000, "acc_eps": 0.6835, "acc_theta": 0.7528795811518325, "ref": 0.07984738580102003, "rel": 0.4392041091556484, "n_nonzero_gt": 1910}, "wilson95": [0.6627807408887915, 0.7035157027479108], "grouped_bootstrap95": [0.6627480469009942, 0.7032482843427466], "n_test_groups": 1822, "per_meter_type": {"biao1": {"n": 483, "acc_eps": 0.6811594202898551}, "biao2": {"n": 253, "acc_eps": 0.6798418972332015}, "biao3": {"n": 87, "acc_eps": 0.896551724137931}, "biao4": {"n": 199, "acc_eps": 0.7688442211055276}, "biao5": {"n": 372, "acc_eps": 0.8010752688172043}, "biao6": {"n": 412, "acc_eps": 0.6650485436893204}, "others": {"n": 194, "acc_eps": 0.3247422680412371}}, "decoders": {"argmax": 0.672, "expect": 0.677, "window": 0.6835}, "span_cls_hist": [3, 6, 662, 663, 563, 24, 8, 5, 66], "by_train_similarity": {"0.00-0.90": {"n": 927, "acc_eps": 0.6364617044228694}, "0.90-0.95": {"n": 268, "acc_eps": 0.6902985074626866}, "0.95-0.98": {"n": 325, "acc_eps": 0.7569230769230769}, "0.98-0.99": {"n": 179, "acc_eps": 0.7486033519553073}, "0.99-1.00": {"n": 301, "acc_eps": 0.7043189368770764}}}
+[w0] [ 6513.9s] TEST {"metrics": {"n": 1853, "acc_eps": 0.5407447382622774, "acc_theta": 0.6798661461238148, "ref": 0.13124931959175964, "rel": 0.5903631507459977, "n_nonzero_gt": 1793}, "wilson95": [0.5179938175288274, 0.5633270724576414], "grouped_bootstrap95": [0.5160606271806439, 0.5657760554166764], "n_test_groups": 1689, "per_meter_type": {"biao1": {"n": 72, "acc_eps": 0.5555555555555556}, "biao2": {"n": 53, "acc_eps": 0.6037735849056604}, "biao3": {"n": 8, "acc_eps": 0.625}, "biao4": {"n": 21, "acc_eps": 0.8571428571428571}, "biao5": {"n": 100, "acc_eps": 0.45}, "biao6": {"n": 58, "acc_eps": 0.5517241379310345}, "others": {"n": 53, "acc_eps": 0.2830188679245283}, "train.json row": {"n": 1488, "acc_eps": 0.5477150537634409}}, "decoders": {"argmax": 0.5364274150026983, "expect": 0.5137614678899083, "window": 0.5407447382622774}, "span_cls_hist": [662, 579, 460, 65, 10, 6, 114], "by_train_similarity": {"0.00-0.90": {"n": 1059, "acc_eps": 0.48725212464589235}, "0.90-0.95": {"n": 264, "acc_eps": 0.6060606060606061}, "0.95-0.98": {"n": 363, "acc_eps": 0.5977961432506887}, "0.98-0.99": {"n": 154, "acc_eps": 0.6428571428571429}, "0.99-1.00": {"n": 13, "acc_eps": 0.7692307692307693}}, "split_file": {"info": {"split_file": "splits_v3.json", "split_sha256": "c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3", "n_names": {"train": 7176, "val": 945, "test": 1896}, "n_rows": {"train": 7176, "val": 945, "test": 1896}, "names_without_label_row": {"train": 0, "val": 0, "test": 0}, "n_test_known_range": 1853, "n_test_unknown_range": 43, "n_test_from_test_json": 365, "B": 160, "seed": 2029, "tau_twin": 0.98, "manifest_baselines": {"knn_copy_official": [0.4177088544272136, 1999], "knn_copy_v3_test": [0.3416082029141932, 1853], "knn_copy_v3_val": [0.24258474576271186, 944]}}, "n_test_rows": 1896, "n_scored": 1853, "n_excluded_unknown_range": 43, "by_source_file": {"test.json": {"n": 365, "acc_eps": 0.5123287671232877}, "train.json": {"n": 1488, "acc_eps": 0.5477150537634409}}, "by_range_source": {"detail_parse": {"n": 166, "acc_eps": 0.1927710843373494}, "range_field": {"n": 1322, "acc_eps": 0.5922844175491679}, "range_numeric": {"n": 365, "acc_eps": 0.5123287671232877}, "unknown": {"n": 0, "acc_eps": null}}, "by_range_class": {"range 3": {"n": 663, "acc_eps": 0.55052790346908}, "range 6": {"n": 578, "acc_eps": 0.6539792387543253}, "range 10": {"n": 460, "acc_eps": 0.49782608695652175}, "other": {"n": 152, "acc_eps": 0.19736842105263158}}, "knn_copy_baseline": {"n": 1853, "acc_eps": 0.3410685375067458, "wilson95": [0.31983220516106364, 0.36296246899767753], "feature": "min(cos gray56, cos rgb32), nearest image of the split's train part"}}}
+[w1] [ 6655.4s] TEST {"metrics": {"n": 1853, "acc_eps": 0.5450620615218564, "acc_theta": 0.6748466257668712, "ref": 0.12810449873901414, "rel": 0.6687984645390849, "n_nonzero_gt": 1793}, "wilson95": [0.5223190863541992, 0.5676185866771933], "grouped_bootstrap95": [0.5206956115779645, 0.5708110410730219], "n_test_groups": 1689, "per_meter_type": {"biao1": {"n": 72, "acc_eps": 0.5555555555555556}, "biao2": {"n": 53, "acc_eps": 0.6226415094339622}, "biao3": {"n": 8, "acc_eps": 0.625}, "biao4": {"n": 21, "acc_eps": 0.8095238095238095}, "biao5": {"n": 100, "acc_eps": 0.43}, "biao6": {"n": 58, "acc_eps": 0.6206896551724138}, "others": {"n": 53, "acc_eps": 0.20754716981132076}, "train.json row": {"n": 1488, "acc_eps": 0.5544354838709677}}, "decoders": {"argmax": 0.5434430652995142, "expect": 0.5321100917431193, "window": 0.5450620615218564}, "span_cls_hist": [666, 574, 459, 53, 13, 12, 119], "by_train_similarity": {"0.00-0.90": {"n": 1059, "acc_eps": 0.48819641170915956}, "0.90-0.95": {"n": 264, "acc_eps": 0.625}, "0.95-0.98": {"n": 363, "acc_eps": 0.6005509641873278}, "0.98-0.99": {"n": 154, "acc_eps": 0.6493506493506493}, "0.99-1.00": {"n": 13, "acc_eps": 0.7692307692307693}}, "split_file": {"info": {"split_file": "splits_v3.json", "split_sha256": "c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3", "n_names": {"train": 7176, "val": 945, "test": 1896}, "n_rows": {"train": 7176, "val": 945, "test": 1896}, "names_without_label_row": {"train": 0, "val": 0, "test": 0}, "n_test_known_range": 1853, "n_test_unknown_range": 43, "n_test_from_test_json": 365, "B": 160, "seed": 2029, "tau_twin": 0.98, "manifest_baselines": {"knn_copy_official": [0.4177088544272136, 1999], "knn_copy_v3_test": [0.3416082029141932, 1853], "knn_copy_v3_val": [0.24258474576271186, 944]}}, "n_test_rows": 1896, "n_scored": 1853, "n_excluded_unknown_range": 43, "by_source_file": {"test.json": {"n": 365, "acc_eps": 0.5068493150684932}, "train.json": {"n": 1488, "acc_eps": 0.5544354838709677}}, "by_range_source": {"detail_parse": {"n": 166, "acc_eps": 0.20481927710843373}, "range_field": {"n": 1322, "acc_eps": 0.5983358547655068}, "range_numeric": {"n": 365, "acc_eps": 0.5068493150684932}, "unknown": {"n": 0, "acc_eps": null}}, "by_range_class": {"range 3": {"n": 663, "acc_eps": 0.5384615384615384}, "range 6": {"n": 578, "acc_eps": 0.6799307958477508}, "range 10": {"n": 460, "acc_eps": 0.5065217391304347}, "other": {"n": 152, "acc_eps": 0.17763157894736842}}, "knn_copy_baseline": {"n": 1853, "acc_eps": 0.3410685375067458, "wilson95": [0.31983220516106364, 0.36296246899767753], "feature": "min(cos gray56, cos rgb32), nearest image of the split's train part"}}}
+
+## seed-mean statistic: kernel bench-gauges-gpu-seedmean version 1 (script sha256 f7e1612a4599c58097e6874257cc34dd43a653323444c637b64f327fcec4377b), output seedmean.txt
+[official split] config r18-224: seeds [0, 1, 2, 3, 4], n = 2000 scored rows
+  per-seed Acc_eps: 0.6845, 0.6910, 0.6880, 0.6810, 0.6835  (min 0.6810, max 0.6910, sd 0.0039)
+  H (seed mean) = 0.6856   Wilson 95% at n=2000: [0.6649, 0.7056]   block bootstrap 95% over 71 blocks: [0.6490, 0.7190]
+  copy floor 0.4175   H minus floor +0.2681   block bootstrap 95% of the difference: [+0.2334, +0.3010]
+  VERDICT (applies to the pre-registered primary config only): Wilson LB > 62.4 and block LB > 62.4: full wording of FROZEN-4 section 0 allowed (primary config only)
+[split v3] config r18-224: seeds [0, 1, 2], n = 1853 scored rows
+  per-seed Acc_eps: 0.5461, 0.5407, 0.5451  (min 0.5407, max 0.5461, sd 0.0029)
+  H (seed mean) = 0.5440   Wilson 95% at n=1853: [0.5212, 0.5665]   block bootstrap 95% over 14 blocks: [0.4672, 0.6157]
+  copy floor 0.3411   H minus floor +0.2029   block bootstrap 95% of the difference: [+0.1733, +0.2340]

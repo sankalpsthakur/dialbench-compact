@@ -1,0 +1,34 @@
+dialbench-compact
+Copyright 2026 Sankalp Thakur
+
+The code in this repository is licensed under the Apache License, Version 2.0 (LICENSE), except the DialBench-derived files listed below. The work is independent: it is not
+affiliated with, sponsored by or endorsed by the authors of DialBench.
+
+DialBench (https://github.com/Event-AHU/DialBench, arXiv 2511.21982)
+  What is derived from it, and how:
+  - src/dialbench_metrics.py: the metric definitions of benchmark/benchmark.py (extract_last_number and the accumulation of Acc_eps, Acc_theta, Ref and Rel), ported to numpy
+    without changing a statement that computes a number. The Wilson interval and the bootstrap in the same file are ours.
+  - tests/official_reference.py: a verbatim excerpt of the evaluation logic of benchmark/benchmark.py (the input / output, model, progress-bar and image-saving lines removed). It is
+    the oracle that tests/test_dialbench_metrics.py compares the port with.
+  - kernels/*/script.py: generated bundles that embed src/dialbench_metrics.py as a string.
+  Source retrieved on 2026-10-07 (default branch main; the last push of the repository was on 2026-08-27).
+  Licence of that code, as found: the README of the repository says "Code: BSD 3-Clause License"; the LICENSE file of the repository is the MIT License, "Copyright (c) 2025
+  Event-AHU". The text of the LICENSE file is reproduced in LICENSES/MIT-DialBench.txt, and the files above remain subject to it (and to the BSD 3-Clause conditions if those are
+  the intended ones: the copyright notice and the disclaimer travel with the files, and the authors' names are not used to endorse this work). We asked the authors
+  by e-mail on 2026-10-07 and 2026-10-17 (and sent them a result note on 2026-10-18) which licence they intend; see README.md.
+
+No DialBench data are included
+  This repository contains no RPM-10K image, no label file (labels/train.json, labels/test.json), no label value and no model weights. The README of the DialBench repository lists
+  the licence of the dataset and of the authors' model weights as "TBD". Anyone who wants to run the code needs the data from the authors, under whatever terms they state.
+  The following files contain image FILE NAMES of the release (and block or group numbers computed by us from image similarity), nothing else of it:
+  - protocol/splits_v2.json, protocol/splits_v3.json: the two re-splits (names, group or block ids, purged names).
+  - predictions/*.json: the predictions of our models, one number per image name (model outputs, not labels).
+  Aggregate statistics about the release (row counts, the thumbnail-similarity tables, file counts) are in docs/ and TEST-LOG.md.
+
+Model weights
+  None are included. The models were trained on RPM-10K from ImageNet-pretrained initial weights (torchvision ResNet-18, IMAGENET1K_V1, converted by kernels/model-port; timm
+  MobileNetV3), which the kernels download at run time; the weights stay private until the authors state the terms for models trained on their data.
+
+Libraries
+  The code imports NumPy, PyTorch, torchvision, timm, ONNX Runtime and JAX / Flax at run time (BSD-3-Clause, Apache-2.0 and MIT licences); none of their code is included.
+  src/jax_resnet.py is our own Flax implementation of ResNet-18 and ResNet-34 whose parameter names mirror torchvision's.

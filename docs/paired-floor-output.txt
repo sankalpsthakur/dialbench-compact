@@ -1,0 +1,15 @@
+[official split, run 1] n=2000  model 0.5825  copy 0.4175  difference +0.1650
+  agreement: both hit 700, model only 465, copy only 135, neither 700
+  image-level bootstrap 95% of the difference: [+0.1425, +0.1885]
+  block-level (160-id blocks) bootstrap 95% of the difference over 71 blocks: [+0.1363, +0.1932]
+  block-level bootstrap 95% of model Acc_eps: [0.5483, 0.6162]
+  block-level bootstrap 95% of copy Acc_eps: [0.3828, 0.4540]
+  per block difference (block, rows, model minus copy): 71 blocks, min -0.118, max 0.429
+[split v3, run 2] n=1853  model 0.5013  copy 0.3411  difference +0.1603
+  agreement: both hit 530, model only 399, copy only 102, neither 822
+  image-level bootstrap 95% of the difference: [+0.1376, +0.1824]
+  block-level (160-id blocks) bootstrap 95% of the difference over 14 blocks: [+0.1186, +0.2052]
+  block-level bootstrap 95% of model Acc_eps: [0.4194, 0.5770]
+  block-level bootstrap 95% of copy Acc_eps: [0.2621, 0.4111]
+  per block difference (block, rows, model minus copy): [(1, 131, 0.046), (13, 133, 0.12), (17, 138, 0.138), (18, 142, 0.218), (28, 132, 0.121), (34, 145, 0.255), (35, 150, 0.173), (43, 123, 0.22), (47, 122, 0.09), (51, 142, 0.085), (59, 109, 0.248), (64, 145, 0.331), (65, 125, 0.08), (69, 116, 0.095)]
+[split v3, run 2] block bootstrap 95% of Acc_eps 0.5013: [0.4220, 0.5796] (check against tools/v3_posthoc.py: 0.4220, 0.5796 expected)

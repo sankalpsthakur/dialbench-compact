@@ -1,0 +1,26 @@
+[
+ {
+  "label": "p-off",
+  "cfg": {
+   "arch": "resnet18",
+   "res": 224,
+   "tag": "f-r18-224-off-s0",
+   "pretrained": "none",
+   "val_mode": "split",
+   "n_val": 1000
+  },
+  "weights": "f-r18-224-off-s0_ema.pt"
+ },
+ {
+  "label": "p-v3",
+  "cfg": {
+   "arch": "resnet18",
+   "res": 224,
+   "tag": "f-r18-224-v3-s0",
+   "pretrained": "none",
+   "split_file": "splits_v3.json",
+   "split_sha256": "c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3"
+  },
+  "weights": "f-r18-224-v3-s0_ema.pt"
+ }
+]

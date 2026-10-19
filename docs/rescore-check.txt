@@ -1,0 +1,34 @@
+Re-scoring of the public prediction files (predictions/*.json) against stand-in label files rebuilt from the private full prediction files; compared with the numbers
+recorded on 2026-10-17 (docs/stageB-output.txt, TEST-LOG.md). The stand-in labels are temporary and are not part of this repository.
+
+official split: protocol/rescore_seeds.py, 5 seeds, n = 2000
+  ok   per-seed Acc_eps: got [0.6845, 0.691, 0.688, 0.681, 0.6835], recorded [0.6845, 0.691, 0.688, 0.681, 0.6835]
+  ok   H (seed mean): got 0.6856, recorded 0.6856
+  ok   Wilson 95 %: got [0.6649, 0.7056], recorded [0.6649, 0.7056]
+  ok   block bootstrap 95 % (71 blocks): got [0.649, 0.719], recorded [0.649, 0.719]
+  ok   number of blocks: got 71, recorded 71
+  four-metric means: Acc_eps 0.6856  Acc_theta 0.7488  Ref 0.0759  Rel 0.3923
+  ok   four-metric means equal results/four_metric_table.json: got [0.6856, 0.7487958115183245, 0.07589763101102129, 0.39225023203990605], recorded [0.6856, 0.7487958115183245, 0.07589763101102129, 0.39225023203990605]
+  ok   per-seed four metrics equal results/four_metric_table.json: got [[0.6845, 0.7465968586387435, 0.08143484030318869, 0.3779539684446833], [0.691, 0.7439790575916231, 0.07120182464629042, 0.34470872492805776], [0.688, 0.7518324607329843, 0.08164405203901029, 0.4293604979663196], [0.681, 0.7486910994764397, 0.06536005226559703, 0.37002385970482116], [0.6835, 0.7528795811518325, 0.07984738580102003, 0.4392041091556484]], recorded [[0.6845, 0.7465968586387435, 0.08143484030318869, 0.3779539684446833], [0.691, 0.7439790575916231, 0.07120182464629042, 0.34470872492805776], [0.688, 0.7518324607329843, 0.08164405203901029, 0.4293604979663196], [0.681, 0.7486910994764397, 0.06536005226559703, 0.37002385970482116], [0.6835, 0.7528795811518325, 0.07984738580102003, 0.4392041091556484]]
+
+official split: protocol/score.py, seed 0
+  ok   Acc_eps: got 0.6845, recorded 0.6845
+  ok   Wilson 95 %: got [0.6638, 0.7045], recorded [0.6638, 0.7045]
+  ok   missing predictions: got 0, recorded 0
+
+split v3 (test part): protocol/rescore_seeds.py --v3, 3 seeds
+  ok   scored rows / excluded rows: got [1853, 43], recorded [1853, 43]
+  ok   per-seed Acc_eps: got [0.5461, 0.5407, 0.5451], recorded [0.5461, 0.5407, 0.5451]
+  ok   H (seed mean): got 0.544, recorded 0.544
+  ok   Wilson 95 %: got [0.5212, 0.5665], recorded [0.5212, 0.5665]
+  ok   block bootstrap 95 % (14 blocks): got [0.4672, 0.6157], recorded [0.4672, 0.6157]
+
+split v3 (test part): protocol/score_v3.py, per seed
+  ok   seed 0 Acc_eps (n_scored 1853): got 0.5461, recorded 0.5461
+  ok   seed 0 per-seed four metrics equal rescore_seeds: got [0.5461413923367512, 0.6804238706079196, 0.15647400237935188, 0.8712007696463923], recorded [0.5461413923367512, 0.6804238706079196, 0.15647400237935188, 0.8712007696463923]
+  ok   seed 1 Acc_eps (n_scored 1853): got 0.5407, recorded 0.5407
+  ok   seed 1 per-seed four metrics equal rescore_seeds: got [0.5407447382622774, 0.6798661461238148, 0.13124931959175964, 0.5903631507459977], recorded [0.5407447382622774, 0.6798661461238148, 0.13124931959175964, 0.5903631507459977]
+  ok   seed 2 Acc_eps (n_scored 1853): got 0.5451, recorded 0.5451
+  ok   seed 2 per-seed four metrics equal rescore_seeds: got [0.5450620615218564, 0.6748466257668712, 0.12810449873901414, 0.6687984645390849], recorded [0.5450620615218564, 0.6748466257668712, 0.12810449873901414, 0.6687984645390849]
+
+RESULT all checks passed

@@ -1,0 +1,30 @@
+# bench-gauges-gpu-smoke (CPU twin of the GPU wrapper, version 1, pushed 2026-10-10 02:16:11 UTC, COMPLETE 02:26 UTC): filtered kernel log lines (seconds since the log start, stream, text)
+6 std WRAPPER torch 2.11.0+cpu
+6 std nvidia-smi failed FileNotFoundError(2, 'No such file or directory')
+6 std nvidia-smi -L failed FileNotFoundError(2, 'No such file or directory')
+8 std WRAPPER gpus 2 ['cpu-twin', 'cpu-twin'] | workers 2 | billed rate 2x | hard wall limit 1800 s, start budget 1200 s (cap 4200 billed s)
+8 std [w0] WORKER 0 of 2 pid 18 CUDA_VISIBLE_DEVICES 0
+8 std [w0] DEVICE w0 cpu-twin (no CUDA, orchestration smoke test) torch 2.11.0+cpu
+11 std [w1] WORKER 1 of 2 pid 19 CUDA_VISIBLE_DEVICES 1
+11 std [w1] DEVICE w1 cpu-twin (no CUDA, orchestration smoke test) torch 2.11.0+cpu
+20 std [w0] PREFLIGHT resnet18 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+20 std [w1] PREFLIGHT resnet18 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+23 std [w0] PREFLIGHT resnet34 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet34_imagenet_tv.npz missing [] unexpected []
+23 std [w0] [   15.7s] loaded train tensor (96, 224, 224, 3) torch.uint8
+23 std [w0] [   16.1s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet18_imagenet_tv.npz missing [] unexpected []
+23 std [w0] [   16.3s] params (M) 13.079234
+23 std [w1] PREFLIGHT resnet34 /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet34_imagenet_tv.npz missing [] unexpected []
+23 std [w1] [   15.9s] loaded train tensor (160, 224, 224, 3) torch.uint8
+26 std [w1] [   17.2s] params (M) 3.453346
+41 std [w1] CONFIG DONE s1-mnv3s in 19 s (expected 120 s, scale now 0.50)
+41 std [w1] [   35.1s] loaded train tensor (96, 320, 320, 3) torch.uint8
+44 std [w1] [   35.4s] params (M) 5.124514
+56 std [w1] CONFIG DONE s3-mnv3s-320 in 15 s (expected 120 s, scale now 0.50)
+59 std [w1] [   50.2s] loaded train tensor (96, 224, 224, 3) torch.uint8
+59 std [w1] [   50.6s] loaded /kaggle/input/notebooks/sankalpsthakur/bench-gauges-model-port/resnet34_imagenet_tv.npz missing [] unexpected []
+59 std [w1] [   50.8s] params (M) 23.187394
+62 std [w0] CONFIG DONE s2-r18-224 in 40 s (expected 120 s, scale now 0.50)
+62 std [w0] WORKER 0 finished
+104 std [w1] CONFIG DONE s4-r34-224 in 45 s (expected 120 s, scale now 0.50)
+104 std [w1] WORKER 1 finished
+104 std WRAPPER SUMMARY {"elapsed_s": 98, "cap_billed_s": 4200, "gpus": 2, "gpu_names": ["cpu-twin", "cpu-twin"], "workers": 2, "hard_s": 1800.0, "budget_s": 1200.0, "killed_at_hard_limit": false, "exit_codes": [0, 0], "status": {"s2-r18-224": {"status": "done", "secs": 40, "expected_s": 120, "worker": 0}, "s1-mnv3s": {"status": "done", "secs": 19, "expected_s": 120, "worker": 1}, "s3-mnv3s-320": {"status

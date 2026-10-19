@@ -1,0 +1,36 @@
+[   0.2s] images 10729 id range 1 11332
+[  64.5s] similarity matrix (10729, 10729)
+[  64.6s] random pairs: mean similarity 0.1120, 95th pct 0.4166
+[  64.6s] id distance ~    1: mean sim 0.3294  share >=0.95 0.0517  (pairs 59553)  baseline mean 0.1120
+[  64.6s] id distance ~    2: mean sim 0.3019  share >=0.95 0.0354  (pairs 59542)  baseline mean 0.1120
+[  64.6s] id distance ~    3: mean sim 0.2865  share >=0.95 0.0285  (pairs 59531)  baseline mean 0.1120
+[  64.7s] id distance ~    5: mean sim 0.2685  share >=0.95 0.0204  (pairs 59786)  baseline mean 0.1120
+[  64.7s] id distance ~   10: mean sim 0.2452  share >=0.95 0.0110  (pairs 59815)  baseline mean 0.1120
+[  64.7s] id distance ~   20: mean sim 0.2145  share >=0.95 0.0063  (pairs 59804)  baseline mean 0.1120
+[  64.7s] id distance ~   40: mean sim 0.1831  share >=0.95 0.0012  (pairs 59788)  baseline mean 0.1120
+[  64.7s] id distance ~   80: mean sim 0.1539  share >=0.95 0.0003  (pairs 59585)  baseline mean 0.1120
+[  64.8s] id distance ~  160: mean sim 0.1305  share >=0.95 0.0006  (pairs 59133)  baseline mean 0.1120
+[  64.8s] id distance ~  320: mean sim 0.1162  share >=0.95 0.0002  (pairs 58481)  baseline mean 0.1120
+[  64.8s] id distance ~  640: mean sim 0.1135  share >=0.95 0.0001  (pairs 56755)  baseline mean 0.1120
+[  64.8s] id distance ~ 1280: mean sim 0.1080  share >=0.95 0.0001  (pairs 53081)  baseline mean 0.1120
+[  64.8s] id distance ~ 2560: mean sim 0.1114  share >=0.95 0.0001  (pairs 46707)  baseline mean 0.1120
+[  64.8s] id distance ~ 5000: mean sim 0.1016  share >=0.95 0.0001  (pairs 33974)  baseline mean 0.1120
+[  64.8s] block size B chosen by rule = 160 (smallest id distance >= 40 whose excess similarity over random is <= 10 % of the distance-1 excess; at least 100)
+[  64.8s] blocks 71 size pct 5/50/95 [131.0, 153.0, 160.0]
+[  64.9s] seed 2029 split sizes before purge train/val/test [np.int64(7592), np.int64(1052), np.int64(2085)]
+[  65.2s] purged twins: test 189 val 107 train 416
+[  65.2s] train final size 7176
+[  65.2s] val final size 945
+[  65.2s] test final size 1896
+[  65.3s] final test -> train max similarity pct 50/90/99/100: [0.7992, 0.9611, 0.9783, 0.98]
+[  65.3s] share of official-test images falling in v3 test / val / train / purged: [0.182, 0.09, 0.658] 0.07
+[  65.4s] kNN-1 label copy official train -> official test: n=1999 Acc_eps=0.4177
+[  65.5s] kNN-1 label copy v3 train -> v3 test: n=1853 Acc_eps=0.3416
+[  65.5s] kNN-1 label copy v3 train -> v3 val: n=944 Acc_eps=0.2426
+[  65.5s] v3 test constants: predict 0 Acc_eps=0.0410
+[  65.5s] v3 test composition range 3: 661; train 2556
+[  65.5s] v3 test composition range 6: 576; train 2428
+[  65.5s] v3 test composition range 10: 411; train 1486
+[  65.5s] v3 test composition other: 248; train 706
+[  65.6s] SHA256 of splits_v3.json (json.dumps sort_keys, utf-8): c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3
+[  65.6s] file sha256: c16e51f6b9bd25cfa9925f19412da2510f9eaad9944dcddfc4d3a261307fc2e3 sizes 7176 945 1896

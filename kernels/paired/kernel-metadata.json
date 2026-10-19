@@ -1,0 +1,21 @@
+{
+  "id": "sankalpsthakur/bench-gauges-paired",
+  "title": "bench-gauges-paired",
+  "code_file": "script.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "false",
+  "machine_shape": "",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [
+    "sankalpsthakur/bench-gauges-cpu-mnv3s-b",
+    "sankalpsthakur/bench-gauges-cpu-v3",
+    "sankalpsthakur/bench-gauges-copy-hits",
+    "sankalpsthakur/bench-gauges-rpm-split3"
+  ],
+  "model_sources": []
+}

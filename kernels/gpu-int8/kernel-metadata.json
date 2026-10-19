@@ -1,0 +1,20 @@
+{
+  "id": "sankalpsthakur/bench-gauges-gpu-int8",
+  "title": "bench-gauges-gpu-int8",
+  "code_file": "script.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "machine_shape": "",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [
+    "sankalpsthakur/bench-gauges-rpm-prep",
+    "sankalpsthakur/bench-gauges-rpm-split3",
+    "sankalpsthakur/bench-gauges-gpu-final"
+  ],
+  "model_sources": []
+}

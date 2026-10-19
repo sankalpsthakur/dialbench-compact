@@ -1,0 +1,102 @@
+{
+ "P": "a2-r18-224",
+ "E": "a2-r18-224",
+ "futility": false,
+ "billed_gpus": 2,
+ "workers": 2,
+ "stage_a_billed_s": 7800,
+ "combined": true,
+ "total_charge_min": 224,
+ "sum_caps_billed_s": 25200,
+ "table": [
+  {
+   "idx": 0,
+   "tag": "a1-mnv3s224-f100",
+   "valid": true,
+   "eligible": true,
+   "note": "",
+   "params": 3453346,
+   "t_run_min": 42.565000000000005,
+   "score": 0.6473577235772358
+  },
+  {
+   "idx": 1,
+   "tag": "a2-r18-224",
+   "valid": true,
+   "eligible": true,
+   "note": "",
+   "params": 13079234,
+   "t_run_min": 27.25,
+   "score": 0.6808943089430894
+  },
+  {
+   "idx": 2,
+   "tag": "a3-r18-320",
+   "valid": false,
+   "eligible": false,
+   "note": "no result (skipped, failed or not run)"
+  },
+  {
+   "idx": 3,
+   "tag": "a4-mnv3s320",
+   "valid": true,
+   "eligible": true,
+   "note": "",
+   "params": 5124514,
+   "t_run_min": 32.748333333333335,
+   "score": 0.6636178861788617
+  },
+  {
+   "idx": 4,
+   "tag": "a5-r34-224",
+   "valid": false,
+   "eligible": false,
+   "note": "no result (skipped, failed or not run)"
+  },
+  {
+   "idx": 5,
+   "tag": "a6-mnv3l224",
+   "valid": false,
+   "eligible": false,
+   "note": "no result (skipped, failed or not run)"
+  },
+  {
+   "idx": 6,
+   "tag": "a7-mnv3l320",
+   "valid": false,
+   "eligible": false,
+   "note": "no result (skipped, failed or not run)"
+  }
+ ],
+ "kernels": {
+  "gpu-final": {
+   "runs": [
+    "f-r18-224-off-s0",
+    "f-r18-224-off-s1",
+    "f-r18-224-off-s2",
+    "f-r18-224-v3-s0",
+    "f-r18-224-off-s3",
+    "f-r18-224-off-s4",
+    "f-r18-224-v3-s1",
+    "f-r18-224-v3-s2"
+   ],
+   "est": {
+    "f-r18-224-off-s0": 1680,
+    "f-r18-224-off-s1": 1680,
+    "f-r18-224-off-s2": 1680,
+    "f-r18-224-v3-s0": 1680,
+    "f-r18-224-off-s3": 1680,
+    "f-r18-224-off-s4": 1680,
+    "f-r18-224-v3-s1": 1680,
+    "f-r18-224-v3-s2": 1680
+   },
+   "charge_s": 13440,
+   "has_v3": true,
+   "has_off": true,
+   "makespan_s": 6720.0,
+   "cap_billed_s": 17400,
+   "expected_wall_min": 122.0,
+   "expected_billed_h": 4.066666666666666
+  }
+ }
+}

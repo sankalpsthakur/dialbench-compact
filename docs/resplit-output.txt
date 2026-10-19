@@ -1,0 +1,32 @@
+[   0.2s] images 10729 train rows 8730 test rows 2000
+[  67.7s] similarity matrix (10729, 10729) float32
+[  67.7s] train-only images 8729 test-only images 1999 in both 1
+
+======== official split leakage by threshold (min of gray56, rgb32 cosine) ========
+[  68.2s] tau 0.9: test with a train neighbour >= tau: 0.4322   train with another train neighbour >= tau: 0.4270
+[  68.2s] tau 0.95: test with a train neighbour >= tau: 0.2971   train with another train neighbour >= tau: 0.2735
+[  68.2s] tau 0.98: test with a train neighbour >= tau: 0.1451   train with another train neighbour >= tau: 0.1386
+[  68.2s] tau 0.99: test with a train neighbour >= tau: 0.0880   train with another train neighbour >= tau: 0.0848
+[  68.2s] tau 0.995: test with a train neighbour >= tau: 0.0605   train with another train neighbour >= tau: 0.0509
+[  68.2s] pct test->train [0.5384, 0.7236, 0.8686, 0.9612, 0.9963, 0.9988] train->train [0.5372, 0.7216, 0.8646, 0.9568, 0.9951, 0.9987]
+
+======== group structure ========
+[  68.9s] tau 0.95: pairs 10453, groups 8297, largest 158, singletons 7448, groups containing both train and test images 347
+[  69.5s] tau 0.98: pairs 3877, groups 9503, largest 141, singletons 9102, groups containing both train and test images 160
+[  70.2s] tau 0.99: pairs 1708, groups 9977, largest 44, singletons 9737, groups containing both train and test images 107
+[  70.2s] v2 sizes train/val/test [np.int64(7707), np.int64(1022), np.int64(2000)] from tau 0.98
+
+======== kNN-1 label-copy baseline (official metric) on splits ========
+[  70.3s] official train -> official test: n=1999 Acc_eps(copy)=0.4177
+[  70.4s] v2 train -> v2 test: n=1964 Acc_eps(copy)=0.4022
+[  70.5s] v2 train -> v2 val: n=1009 Acc_eps(copy)=0.3954
+[  70.5s] official test subset with NO train neighbour >= 0.95: n=1405 kNN-copy Acc_eps=0.4149
+[  70.6s] official test subset with NO train neighbour >= 0.98: n=1709 kNN-copy Acc_eps=0.4342
+[  70.7s] official test subset with NO train neighbour >= 0.99: n=1823 kNN-copy Acc_eps=0.4290
+
+======== composition check (labels, report only) ========
+[  70.7s] official test n 1999 span counts (3/6/10/other=-1) {10.0: 531, 6.0: 665, 3.0: 661, -1.0: 142}
+[  70.7s] v2 test n 2000 span counts (3/6/10/other=-1) {6.0: 698, -1.0: 111, 3.0: 745, 10.0: 410}
+[  70.7s] official train n 8729 span counts (3/6/10/other=-1) {-1.0: 395, 3.0: 3059, 10.0: 2312, 6.0: 2813}
+[  70.7s] v2 train n 7707 span counts (3/6/10/other=-1) {10.0: 2171, 6.0: 2436, 3.0: 2629, -1.0: 370}
+[  70.7s] wrote splits_v2.json 7707 1022 2000
