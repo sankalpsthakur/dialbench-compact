@@ -40,7 +40,7 @@ Code, protocol, pre-registrations, test log and per-seed predictions behind a co
 
 ## Open questions to the authors
 
-The audit raised three questions, which were put to the DialBench authors by e-mail on 2026-10-07 (the licence question was repeated on 2026-10-17); no answer was known on 2026-10-19. On 2026-10-20 the licence question was also posted as [Event-AHU/DialBench#5](https://github.com/Event-AHU/DialBench/issues/5):
+The audit raised three questions, which were put to the DialBench authors by e-mail on 2026-10-07 (the licence question was repeated on 2026-10-17); no answer was known on 2026-10-19. On 2026-10-19 (UTC) the licence question was also posted as [Event-AHU/DialBench#5](https://github.com/Event-AHU/DialBench/issues/5):
 
 1. **Licence:** which licence applies to the RPM-10K data, may weights trained on it be released, and may a scorer port, a split file of image names and baselines be published?
 2. **Split naming:** Section 3.1 of the paper describes an 81 % / 19 % train/test split and Section 3.2 calls the 2,000 held-out images "validation", while the release names that file `test.json`; which is intended, and was any checkpoint or hyperparameter chosen on it?
